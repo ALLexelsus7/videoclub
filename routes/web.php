@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+//🐵 Ejercicio 2 Importo los controladores
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CatalogController;
 
 //Esta es la pantalla inicial de bienvenida de laravel por default
 /*Route::get('/', function () {
@@ -9,9 +12,9 @@ use Illuminate\Support\Facades\Route;
 
 //🐵 Ejercicio 1.2 - Definición de las rutas
 // Pantalla principal
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('home');
-});
+});*/
 
 // Login y Logout
 Route::get('login', function () { //Puedo no poner la '/' inicial
@@ -23,7 +26,7 @@ Route::get('logout', function () {
 });
 
 // Catálogo
-Route::get('catalog', function () {
+/*Route::get('catalog', function () {
     return view('catalog.index');
 });
 
@@ -37,4 +40,20 @@ Route::get('catalog/create', function () {
 
 Route::get('catalog/edit/{id}', function ($id) {
     return view('catalog.edit', ['id' => $id]);
-});
+});*/
+
+//🐵 Ejercicio 2
+// Ruta Home actualizada 
+Route::get('/', [HomeController::class, 'getHome']);
+//Rutas Catalogo actualizadas 
+Route::get('catalog', [CatalogController::class, 'getIndex']);
+Route::get('catalog/show/{id}', [CatalogController::class, 'getShow']);
+Route::get('catalog/create', [CatalogController::class, 'getCreate']);
+Route::get('catalog/edit/{id}', [CatalogController::class, 'getEdit']);
+
+/*Se usan los controladores porque...
+Organización: El archivo de rutas no se llena de código CSS/HTML/Lógica.
+Reutilización: Puedes usar el mismo método del controlador para diferentes cosas.
+Escalabilidad: Cuando empecemos a usar la Base de Datos (en el siguiente ejercicio), 
+toda la consulta de datos se hará en el controlador.
+*/
