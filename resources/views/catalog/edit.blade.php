@@ -2,7 +2,8 @@
 
 @section('content')
 <div class="max-w-lg mx-auto">
-    <h1 class="text-2xl font-bold mb-6 text-gray-800">Modificar película (ID: {{ $id }})</h1>
+    <h1 class="text-2xl font-bold mb-6 text-gray-800">Modificar película (ID: {{ $pelicula->id }})</h1>
+    <!-- Aqui agrego $pelicula->id en lugar de solo $id -->
     
     <form action="#" method="POST" class="space-y-4">
         @csrf
