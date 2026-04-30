@@ -1,4 +1,4 @@
-<!-- Clase 9 Act 1 -->
+<!-- 🐵 Clase 9 Act 1 -->
 <!-- Se hace la migracion con php artisan make:migration create_posts_table -->
 <?php
 

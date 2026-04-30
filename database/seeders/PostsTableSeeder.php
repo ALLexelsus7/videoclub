@@ -1,5 +1,5 @@
 <?php
-// Clase 9 Act 2
+// 🐵 Clase 9 Act 2
 // Creo el seeder con php artisan make:seeder PostsTableSeeder
 namespace Database\Seeders;
 

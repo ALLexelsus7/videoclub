@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 //🐵 Ejercicio 2 Importo los controladores
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\PostController;
 
 //Esta es la pantalla inicial de bienvenida de laravel por default
 /*Route::get('/', function () {
@@ -57,3 +58,6 @@ Reutilización: Puedes usar el mismo método del controlador para diferentes cos
 Escalabilidad: Cuando empecemos a usar la Base de Datos (en el siguiente ejercicio), 
 toda la consulta de datos se hará en el controlador.
 */
+
+//🐵 Clase 9 Act3
+Route::get('/posts', [PostController::class, 'getIndex']);
