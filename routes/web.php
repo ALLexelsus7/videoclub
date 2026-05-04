@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\PostController;
+// 🐵 Clase 10 Act2 Importo el controlador de Contacto para el formulario
+use App\Http\Controllers\ContactController;
 
 //Esta es la pantalla inicial de bienvenida de laravel por default
 /*Route::get('/', function () {
@@ -61,3 +63,7 @@ toda la consulta de datos se hará en el controlador.
 
 //🐵 Clase 9 Act3
 Route::get('/posts', [PostController::class, 'getIndex']);
+
+//🐵 Clase 10 Act2
+Route::get('/contacto', [ContactController::class, 'getForm']);
+Route::post('/contacto', [ContactController::class, 'postForm']);

@@ -17,6 +17,7 @@
                 <a href="{{ url('/catalog') }}" class="hover:underline">Catálogo</a>
                 <a href="{{ url('/catalog/create') }}" class="hover:underline">Nueva Película</a>
                 <a href="{{ url('/posts') }}" class="hover:underline">Posts</a>
+                <a href="{{ url('/contacto') }}" class="hover:underline">Contacto</a>
                 <a href="{{ url('/login') }}" class="hover:underline">Login</a>
             </div>
         </div>
