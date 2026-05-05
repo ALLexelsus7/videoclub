@@ -46,13 +46,26 @@ Route::get('catalog/edit/{id}', function ($id) {
 });*/
 
 //🐵 Ejercicio 2
-// Ruta Home actualizada 
-Route::get('/', [HomeController::class, 'getHome']);
-//Rutas Catalogo actualizadas 
-Route::get('catalog', [CatalogController::class, 'getIndex']);
-Route::get('catalog/show/{id}', [CatalogController::class, 'getShow']);
-Route::get('catalog/create', [CatalogController::class, 'getCreate']);
-Route::get('catalog/edit/{id}', [CatalogController::class, 'getEdit']);
+// Ruta Home actualizada [Ruta abierta]
+Route::get('/', [App\Http\Controllers\HomeController::class, 'getHome']);
+//Rutas Catalogo y demas actualizadas  [Rutas protegidas por middleware de autenticación]
+Route::middleware(['auth'])->group(function () {
+    Route::get('catalog', [CatalogController::class, 'getIndex']);
+    Route::get('catalog/show/{id}', [CatalogController::class, 'getShow']);
+    Route::get('catalog/create', [CatalogController::class, 'getCreate']);
+    Route::get('catalog/edit/{id}', [CatalogController::class, 'getEdit']);
+    //🐵 Clase 9 Act3
+    Route::get('/posts', [PostController::class, 'getIndex']);
+    //🐵 Clase 10 Act2
+    Route::get('/contacto', [ContactController::class, 'getForm']);
+    Route::post('/contacto', [ContactController::class, 'postForm']);
+    //🐵 Ejercicio 4
+    Route::post('/catalog/create', [CatalogController::class, 'postCreate']); //post para enviar
+    Route::put('/catalog/edit/{id}', [CatalogController::class, 'putEdit']); // put para actualizar (con el parametro de id)
+});
+
+// Laravel Auth Routes (Breeze lo añade automáticamente al instalarlo)
+require __DIR__.'/auth.php';
 
 /*Se usan los controladores porque...
 Organización: El archivo de rutas no se llena de código CSS/HTML/Lógica.
@@ -60,14 +73,3 @@ Reutilización: Puedes usar el mismo método del controlador para diferentes cos
 Escalabilidad: Cuando empecemos a usar la Base de Datos (en el siguiente ejercicio), 
 toda la consulta de datos se hará en el controlador.
 */
-
-//🐵 Clase 9 Act3
-Route::get('/posts', [PostController::class, 'getIndex']);
-
-//🐵 Clase 10 Act2
-Route::get('/contacto', [ContactController::class, 'getForm']);
-Route::post('/contacto', [ContactController::class, 'postForm']);
-
-//🐵 Ejercicio 4
-Route::post('/catalog/create', [CatalogController::class, 'postCreate']); //post para enviar
-Route::put('/catalog/edit/{id}', [CatalogController::class, 'putEdit']); // put para actualizar (con el parametro de id)

@@ -13,11 +13,9 @@ class DatabaseSeeder extends Seeder
 
     /**
      * Seed the application's database.
-     */
+     */  
 
-   
-    
-
+    // Función para insertar el catálogo de películas en la tabla movies
     private function seedCatalog() {
         
         // Insertamos el array
@@ -104,6 +102,8 @@ class DatabaseSeeder extends Seeder
         }
     }
 
+    // Funcion principal del seeder que corre las funciones internas o externasque le ponga
+    // se ejecuta al llamar a php artisan db:seed o php artisan db:seed --class=SeederExterno
     public function run(): void
     {
         // Llamo a la función para insertar el catálogo de películas
@@ -116,10 +116,11 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
     }
+    
 }
 
 /*Ejecuto php artisan db:seed para poblar la base de datos
 Verifico en terminal Laragon con select * from movies \G;
 o con php artisan tinker con App\Models\Movie::all(); */
-
