@@ -67,3 +67,7 @@ Route::get('/posts', [PostController::class, 'getIndex']);
 //🐵 Clase 10 Act2
 Route::get('/contacto', [ContactController::class, 'getForm']);
 Route::post('/contacto', [ContactController::class, 'postForm']);
+
+//🐵 Ejercicio 4
+Route::post('/catalog/create', [CatalogController::class, 'postCreate']); //post para enviar
+Route::put('/catalog/edit/{id}', [CatalogController::class, 'putEdit']); // put para actualizar (con el parametro de id)

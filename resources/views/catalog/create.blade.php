@@ -4,7 +4,8 @@
 <div class="max-w-lg mx-auto">
     <h1 class="text-2xl font-bold mb-6 text-gray-800">Añadir película</h1>
     
-    <form action="#" method="POST" class="space-y-4">
+    {{-- en action="" pongo la URL en donde se procesará el formulario --}}
+    <form action="{{ action([App\Http\Controllers\CatalogController::class, 'postCreate']) }}" method="POST" class="space-y-4">
         @csrf {{-- Siempre necesario en formularios Laravel --}}
         
         <div>
@@ -29,7 +30,7 @@
         </div>
 
         <div>
-            <label class="block text-sm font-medium text-gray-700">Resumen</label>
+            <label class="block text-sm font-medium text-gray-700">Sinopsis</label>
             <textarea name="synopsis" rows="4" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"></textarea>
         </div>
 

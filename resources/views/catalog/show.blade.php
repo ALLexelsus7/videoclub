@@ -1,6 +1,11 @@
 @extends('layouts.master')
 
 @section('content')
+
+    {{-- Incluye la alerta --}}
+    @include('partials.alert')
+
+    {{-- Detalles de cada película --}}
     <div class="flex flex-col md:flex-row">
         <div class="md:w-1/3">
             <img src="{{$pelicula->poster}}" class="w-full rounded shadow-xl">
