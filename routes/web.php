@@ -8,6 +8,9 @@ use App\Http\Controllers\PostController;
 // 🐵 Clase 10 Act2 Importo el controlador de Contacto para el formulario
 use App\Http\Controllers\ContactController;
 
+//Ej 4 los usuarios logueados no puedan ver el login y register
+Auth::routes();
+
 //Esta es la pantalla inicial de bienvenida de laravel por default
 /*Route::get('/', function () {
     return view('welcome');
@@ -20,13 +23,13 @@ use App\Http\Controllers\ContactController;
 });*/
 
 // Login y Logout
-Route::get('login', function () { //Puedo no poner la '/' inicial
+/*Route::get('login', function () { //Puedo no poner la '/' inicial
     return view('auth.login'); //Uso un '.' en vez de la '/' de subcarpeta
 });
 
 Route::get('logout', function () {
     return "Logout usuario";
-});
+});*/
 
 // Catálogo
 /*Route::get('catalog', function () {
@@ -49,7 +52,7 @@ Route::get('catalog/edit/{id}', function ($id) {
 // Ruta Home actualizada [Ruta abierta]
 Route::get('/', [App\Http\Controllers\HomeController::class, 'getHome']);
 //Rutas Catalogo y demas actualizadas  [Rutas protegidas por middleware de autenticación]
-Route::middleware(['auth'])->group(function () {
+Route::group(['middleware' => 'auth'], function() {
     Route::get('catalog', [CatalogController::class, 'getIndex']);
     Route::get('catalog/show/{id}', [CatalogController::class, 'getShow']);
     Route::get('catalog/create', [CatalogController::class, 'getCreate']);
@@ -65,7 +68,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 // Laravel Auth Routes (Breeze lo añade automáticamente al instalarlo)
-require __DIR__.'/auth.php';
+//require __DIR__.'/auth.php';
 
 /*Se usan los controladores porque...
 Organización: El archivo de rutas no se llena de código CSS/HTML/Lógica.

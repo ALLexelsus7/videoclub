@@ -14,17 +14,30 @@
             <a href="{{ url('/') }}" class="font-bold text-xl">🎬 Videoclub</a>
             <!-- Uso {{ url('')}} para obtener la ruta absoluta de la vista -->
             <div class="space-x-4">
+                {{-- SOLO PARA USUARIOS LOGUEADOS --}}
+                @if( Auth::check() )
                 <a href="{{ url('/catalog') }}" class="hover:underline">Catálogo</a>
                 <a href="{{ url('/catalog/create') }}" class="hover:underline">Nueva Película</a>
                 <a href="{{ url('/posts') }}" class="hover:underline">Posts</a>
                 <a href="{{ url('/contacto') }}" class="hover:underline">Contacto</a>
-                <a href="{{ url('/login') }}" class="hover:underline">Login</a>
+                {{-- Formulario de Logout (Requisito de seguridad) --}}
+                    <form action="{{ route('logout') }}" method="POST" class="inline">
+                        @csrf {{-- Protección contra CSRF --}}
+                        <button type="submit" class="bg-red-500 hover:bg-red-700 px-3 py-1 rounded text-sm font-bold ml-4">
+                            Cerrar Sesión
+                        </button>
+                    </form>
+                @else
+                    {{-- SOLO PARA INVITADOS --}}
+                    <a href="{{ url('/login') }}" class="hover:underline">Login</a>
+                @endif
             </div>
         </div>
     </nav>
 
     <main class="container mx-auto mt-10 p-6 bg-white rounded shadow">
-        <!-- Aqui se pone el contenido de la pagina que puse con @section('content') en cada vista -->
+        {{-- Aqui se pone el contenido de la pagina que puse con @section('content') en cada vista --}} 
+        {{-- @include('partials.alert') --}}
         @yield('content')
     </main>
 
