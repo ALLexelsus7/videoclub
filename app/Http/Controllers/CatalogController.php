@@ -139,4 +139,35 @@ class CatalogController extends Controller
         //Redirige segun la película editada con un mensaje de éxito usando flash session
         return redirect('/catalog/show/' . $id)->with('info', 'La película se ha modificado correctamente'); 
     }
+
+    //🐵 Ejercicio 5
+    //Método para alquilar una película (cambia el estado a alquilada)
+    public function putRent($id) 
+    {
+        $movie = Movie::findOrFail($id);
+        $movie->rented = true; // Cambia el estado a alquilada
+        $movie->save();
+
+        return back()->with('info', 'La película se ha alquilado correctamente');
+        //back() redirige a la página anterior (en este caso, la de detalles de la película)
+    }
+
+    //Método para devolver una película (cambia el estado a no alquilada)
+    public function putReturn($id)
+    {
+        $movie = Movie::findOrFail($id);
+        $movie->rented = false; // Cambia el estado a no alquilada
+        $movie->save();
+
+        return back()->with('info', 'La película se ha devuelto correctamente');
+    }
+
+    //Método para remover una película (la elimina de la base de datos)
+    public function deleteMovie($id)
+    {
+        $movie = Movie::findOrFail($id);
+        $movie->delete();
+
+        return redirect('/catalog')->with('info', 'La película se ha eliminado correctamente');
+    }
 }

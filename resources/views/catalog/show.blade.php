@@ -2,7 +2,7 @@
 
 @section('content')
 
-    {{-- Incluye la alerta --}}
+    {{-- Incluye la alerta si la hay --}}
     @include('partials.alert')
 
     {{-- Detalles de cada película --}}
@@ -29,10 +29,31 @@
 
             <div class="mt-6 space-x-2">
                 @if($pelicula->rented)
-                    <button class="bg-red-500 text-white px-4 py-2 rounded">Devolver película</button>
-                @else
-                    <button class="bg-blue-500 text-white px-4 py-2 rounded">Alquilar película</button>
+                    <form action="{{ action([App\Http\Controllers\CatalogController::class, 'putReturn'], ['id' => $pelicula->id]) }}" method="POST" style="display:inline">
+                        @method('PUT')
+                        @csrf
+                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">
+                            Devolver película
+                        </button>
+                    </form>
+                @else                   
+                    <form action="{{ action([App\Http\Controllers\CatalogController::class, 'putRent'], ['id' => $pelicula->id]) }}" method="POST" style="display:inline">
+                        @method('PUT')
+                        @csrf
+                        <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded">
+                            Alquilar película
+                        </button>
+                    </form>                  
                 @endif
+                    {{-- Falta agregar que solo lo pueda hacer el admin --}}
+                    <form action="{{ action([App\Http\Controllers\CatalogController::class, 'deleteMovie'], ['id' => $pelicula->id]) }}" method="POST" style="display:inline" onsubmit="return confirm('¿Seguro que quieres eliminarla?')">
+                        {{-- Agrego confirm() para preguntar antes de eliminar --}}
+                        @method('DELETE')
+                        @csrf
+                        <button type="submit" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded">
+                            Eliminar película
+                        </button>
+                    </form>
                 <a href="{{ url('/catalog/edit/' . $pelicula->id ) }}" class="bg-yellow-500 text-white px-4 py-2 rounded">Editar película</a>
                 <a href="{{ url('/catalog') }}" class="border border-gray-400 px-4 py-2 rounded hover:bg-gray-100">Volver al listado</a>
             </div>

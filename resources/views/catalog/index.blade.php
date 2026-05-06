@@ -2,7 +2,7 @@
 
 @section('content')
 
-    {{-- Incluye la alerta --}}
+    {{-- Incluye la alerta si la hay --}}
     @include('partials.alert')
 
     {{-- Lista de películas --}}

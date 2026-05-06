@@ -49,7 +49,7 @@ Route::get('catalog/edit/{id}', function ($id) {
 });*/
 
 //🐵 Ejercicio 2
-// Ruta Home actualizada [Ruta abierta]
+// Ruta Home actualizada [Ruta abierta] getHome redirige a getIndex del CatalogController
 Route::get('/', [App\Http\Controllers\HomeController::class, 'getHome']);
 //Rutas Catalogo y demas actualizadas  [Rutas protegidas por middleware de autenticación]
 Route::group(['middleware' => 'auth'], function() {
@@ -65,6 +65,10 @@ Route::group(['middleware' => 'auth'], function() {
     //🐵 Ejercicio 4
     Route::post('/catalog/create', [CatalogController::class, 'postCreate']); //post para enviar
     Route::put('/catalog/edit/{id}', [CatalogController::class, 'putEdit']); // put para actualizar (con el parametro de id)
+    //🐵 Ejercicio 5
+    Route::put('/catalog/rent/{id}', [CatalogController::class, 'putRent']); 
+    Route::put('/catalog/return/{id}', [CatalogController::class, 'putReturn']); 
+    Route::delete('/catalog/delete/{id}', [CatalogController::class, 'deleteMovie']); // delete para eliminar
 });
 
 // Laravel Auth Routes (Breeze lo añade automáticamente al instalarlo)
