@@ -9,6 +9,8 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ContactController;
 // 🐵 Clase 13 (CRUD libros)
 use App\Http\Controllers\BookController;
+// 🐵 Clase 14 (medio CRUD ventas y calculos)
+use App\Http\Controllers\SaleController;
 
 //Ej 4 los usuarios logueados no puedan ver el login y register
 Auth::routes();
@@ -78,6 +80,10 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/books/{id}/edit', [BookController::class, 'edit']);
     Route::put('/books/{id}', [BookController::class, 'update']);
     Route::delete('/books/{id}', [BookController::class, 'destroy']);
+    // 🐵 Clase 14 (medio CRUD ventas y calculos)
+    Route::get('/sales', [SaleController::class, 'index']);
+    Route::get('/sales/create', [SaleController::class, 'create']);
+    Route::post('/sales', [SaleController::class, 'store']);
 });
 
 // Laravel Auth Routes (Breeze lo añade automáticamente al instalarlo)

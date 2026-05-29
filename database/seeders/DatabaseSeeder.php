@@ -6,7 +6,9 @@ use App\Models\User;
 use App\Models\Movie; // Importo el modelo Movie para poder usarlo en el seeder
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Book; // Importo el modelo Book para poder usarlo en el seeder
+use App\Models\Book; // Importo el modelo Book y Sales para poder usarlo en el seeder
+use App\Models\Sale;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -114,7 +116,10 @@ class DatabaseSeeder extends Seeder
         // $this->command->info('Tabla catálogo inicializada con datos!');        
 
         //Llamo al factory de book para crear 8 registros
-        Book::factory(8)->create();
+        //Book::factory(8)->create();
+
+        //Llamo al factory de sale para crear 10 registros
+        Sale::factory(10)->create();
 
     }
     

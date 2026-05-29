@@ -19,6 +19,7 @@
                 <a href="{{ url('/catalog') }}" class="hover:underline">Catálogo</a>
                 <a href="{{ url('/catalog/create') }}" class="hover:underline">Nueva Película</a>
                 <a href="{{ url('/books') }}" class="hover:underline">Libros</a>
+                <a href="{{ url('/sales') }}" class="hover:underline">Ventas</a>
                 <a href="{{ url('/posts') }}" class="hover:underline">Posts</a>
                 <a href="{{ url('/contacto') }}" class="hover:underline">Contacto</a>
                 {{-- Formulario de Logout (Requisito de seguridad) --}}
