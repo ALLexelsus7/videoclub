@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Movie; // Importo el modelo Movie para poder usarlo en el seeder
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Book; // Importo el modelo Book para poder usarlo en el seeder
 
 class DatabaseSeeder extends Seeder
 {
@@ -106,16 +107,14 @@ class DatabaseSeeder extends Seeder
     // se ejecuta al llamar a php artisan db:seed o php artisan db:seed --class=SeederExterno
     public function run(): void
     {
+        //OJO, comento lo que no quiero que se ejecute al hacer "php artisan db:seed"
+
         // Llamo a la función para insertar el catálogo de películas
-        self::seedCatalog();
-        $this->command->info('Tabla catálogo inicializada con datos!');        
+        //self::seedCatalog();
+        // $this->command->info('Tabla catálogo inicializada con datos!');        
 
-        // User::factory(10)->create();
-
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        //Llamo al factory de book para crear 8 registros
+        Book::factory(8)->create();
 
     }
     
