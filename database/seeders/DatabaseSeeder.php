@@ -112,11 +112,11 @@ class DatabaseSeeder extends Seeder
         //OJO, comento lo que no quiero que se ejecute al hacer "php artisan db:seed"
 
         // Llamo a la función para insertar el catálogo de películas
-        //self::seedCatalog();
-        // $this->command->info('Tabla catálogo inicializada con datos!');        
+        self::seedCatalog();
+        $this->command->info('Tabla catálogo inicializada con datos!');        
 
         //Llamo al factory de book para crear 8 registros
-        //Book::factory(8)->create();
+        Book::factory(8)->create();
 
         //Llamo al factory de sale para crear 10 registros
         Sale::factory(10)->create();

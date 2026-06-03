@@ -31,7 +31,7 @@ class PostsTableSeeder extends Seeder
     }
 }
 
-// Lo ejecuto con php artisan db:seed --class=PostsTableSeeder. 
+// Lo ejecuto con php artisan db:seed --class=PostsTableSeeder 
 // O en su lugar, se llama a este seeder desde el DatabaseSeeder.php para que se ejecute junto con otros seeders
 // con $this->call(PostsTableSeeder::class); dentro del método run() del DatabaseSeeder.php
 // Finalmente se ejecuta php artisan db:seed para poblar la base de datos.

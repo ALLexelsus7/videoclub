@@ -63,6 +63,9 @@ ejecutar('php artisan key:generate');
 ejecutar('php artisan migrate:fresh --seed --force');
 // Extra: si falla algo de las api se hace:
 //ejecutar('php artisan install:api --force');
+// 6.5 Ejecutar Seeders o Factories individuales
+ejecutar('php artisan db:seed --class=PostsTableSeeder --force');
+ejecutar('php artisan db:seed --class=UsersTableSeeder --force');
 
 // 7. Enlace Simbólico (CRÍTICO para que las fotos de los peces se vean)
 // Primero eliminamos el enlace anterior si existe, para evitar errores en la nueva PC
@@ -80,6 +83,12 @@ echo "=====================================================================\n";
 echo "[🏆] DESPLIEGUE TÁCTICO COMPLETADO CON ÉXITO.\n";
 echo "[🚀] Ejecuta 'php artisan serve' para encender los motores.\n";
 echo "=====================================================================\n";
+
+// OJO⚠️ antes de ejecutarlo, descarga:
+// laragon (en variables de entorno poner donde este su php.exe) (y descomentar ;extension=zip en su php.ini), 
+//composer (con la dir. de php de laragon),
+//nodejs (para el npm), y enciende laragon (dandole persmiso para que cree los virtual host
+// y configure apache/nginx)
 
 /* NOTAS:
 1. Ejecuta este instalador en terminal: php installer.php
